@@ -1,4 +1,4 @@
-import { Appcontainer } from "./style";
+import { AppContainer, BodyContainer, AppHeader } from "./style";
 import AddNewItem from "./AddNewItem";
 import { Column } from "./Column";
 import { addList } from "./state/actions";
@@ -14,15 +14,20 @@ const App = () => {
     dispatch(addList(text));
   };
   return (
-    <Appcontainer>
-      {lists.map(({ text, id }) => (
-        <Column key={id} text={text} id={id} />
-      ))}
-      <AddNewItem
-        toggleButtonText="+ Add new Column "
-        onAdd={handleAddColumn}
-      />
-    </Appcontainer>
+    <>
+      <AppContainer>
+        <AppHeader>Trello clone</AppHeader>
+        <BodyContainer>
+          {lists.map(({ text, id }) => (
+            <Column key={id} text={text} id={id} />
+          ))}
+          <AddNewItem
+            toggleButtonText="+ Add new Column "
+            onAdd={handleAddColumn}
+          />
+        </BodyContainer>
+      </AppContainer>
+    </>
   );
 };
 
