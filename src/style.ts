@@ -9,13 +9,33 @@ type ButtonType = {
   success?: Boolean;
 };
 
-export const Appcontainer = styled.div`
-  align-items: flex-start;
+export const AppContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px;
   background-color: #3179ba;
+  height: 100%;
+
+  width: 100%;
+`;
+export const AppHeader = styled.div`
+  background-color: #ffffff3d;
+  color: white;
+  text-align: center;
+  min-height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  border-raduis: 5px;
+`;
+export const BodyContainer = styled.div`
+  align-items: flex-start;
+
   display: flex;
   flex-direction: row;
   height: 100%;
-  padding: 20px;
+
   width: 100%;
 `;
 
