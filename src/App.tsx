@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Appcontainer } from "./style";
+import AddNewItem from "./AddNewItem";
+import { Column } from "./Column";
+import { addList } from "./state/actions";
+import { useAppState } from "./state/AppStateContext";
+const App = () => {
+  const { lists, dispatch } = useAppState();
 
-function App() {
+  /**
+   * HANDLE ADD COLUMN
+   * @param text column Name
+   */
+  const handleAddColumn = (text: string) => {
+    dispatch(addList(text));
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Appcontainer>
+      {lists.map(({ text, id }) => (
+        <Column key={id} text={text} id={id} />
+      ))}
+      <AddNewItem
+        toggleButtonText="+ Add new Column "
+        onAdd={handleAddColumn}
+      />
+    </Appcontainer>
   );
-}
+};
 
 export default App;
