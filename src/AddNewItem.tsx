@@ -23,16 +23,12 @@ const AddNewItem = (props: AddNewItemProps) => {
   /**
    * SHOW  FORM
    */
-  const handleShow = () => {
-    setShowForm(true);
-  };
+  const handleShow = () => setShowForm(true);
 
   /**
    * HIDE FORM
    */
-  const handleHide = () => {
-    setShowForm(false);
-  };
+  const handleHide = () => setShowForm(false);
 
   /**
    * HANDLE ADD NEW ITEM

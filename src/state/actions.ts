@@ -1,3 +1,5 @@
+import { DragItem } from "../DragItem";
+
 /**
  * ACTION TYPES
  */
@@ -13,6 +15,17 @@ export type Action =
   | {
       type: "DELETE_TASK";
       payload: { listId: string; taskId: string };
+    }
+  | {
+      type: "MOVE_LIST";
+      payload: {
+        draggedId: string;
+        hoverId: string;
+      };
+    }
+  | {
+      type: "SET_DRAGGED_ITEM";
+      payload: DragItem | null;
     };
 
 /**
@@ -31,4 +44,17 @@ export const addTask = (text: string, listId: string): Action => ({
 export const deleteTask = (listId: string, taskId: string): Action => ({
   type: "DELETE_TASK",
   payload: { listId, taskId },
+});
+
+export const moveList = (draggedId: string, hoverId: string): Action => ({
+  type: "MOVE_LIST",
+  payload: {
+    draggedId,
+    hoverId,
+  },
+});
+
+export const setDraggedItem = (draggedItem: DragItem | null): Action => ({
+  type: "SET_DRAGGED_ITEM",
+  payload: draggedItem,
 });
