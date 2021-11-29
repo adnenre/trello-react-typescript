@@ -11,8 +11,9 @@ import { isHidden } from "./utils/isHidden";
 type ColumnProps = {
   text: string;
   id: string;
+  isPreview?: boolean;
 };
-export const Column = ({ text, id }: ColumnProps) => {
+export const Column = ({ text, id, isPreview }: ColumnProps) => {
   const { draggedItem, getTasksByListId, dispatch } = useAppState();
   const tasks = getTasksByListId(id);
   const ref = useRef<HTMLDivElement>(null);
@@ -44,7 +45,11 @@ export const Column = ({ text, id }: ColumnProps) => {
   const { drag } = useItemDrag({ type: "COLUMN", id, text });
   drag(drop(ref));
   return (
-    <ColumnContainer ref={ref} isHidden={isHidden(draggedItem, "COLUMN", id)}>
+    <ColumnContainer
+      isPreview={isPreview}
+      ref={ref}
+      isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
+    >
       <ColumnTitle>{text}</ColumnTitle>
       {tasks.map(({ text, id }) => (
         <Card key={id} text={text} id={id} />

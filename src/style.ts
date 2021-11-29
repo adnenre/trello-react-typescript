@@ -9,20 +9,21 @@ type ButtonType = {
   success?: Boolean;
 };
 
-interface DragPreviewContainerProps {
+type DragPreviewContainerProps = {
   isHidden?: boolean;
-}
-export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
-  opacity: ${(props) => (props.isHidden ? 0.3 : 1)};
-`;
+  isPreview?: boolean;
+};
 
+export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
+  transform: ${(props) => (props.isPreview ? "rotate(5deg)" : undefined)};
+  opacity: ${(props) => (props.isHidden ? "0.3" : 1)};
+`;
 export const AppContainer = styled.div`
+  background-color: #3179ba;
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
-  background-color: #3179ba;
   height: 100%;
-
+  padding: 20px;
   width: 100%;
 `;
 export const AppHeader = styled.div`
@@ -130,3 +131,27 @@ export const Input = styled.input`
   width: 100%;
   outline: none;
 `;
+
+export const CustomDragLayerContainer = styled.div`
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+`;
+type DragPreviewWrapperProps = {
+  position: {
+    x: number;
+    y: number;
+  };
+};
+
+export const DragPreviewWrapper = styled.div.attrs<DragPreviewWrapperProps>(
+  ({ position: { x, y } }) => ({
+    style: {
+      transform: `translate(${x}px, ${y}px)`,
+    },
+  })
+)<DragPreviewWrapperProps>``;

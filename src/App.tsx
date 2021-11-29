@@ -3,6 +3,7 @@ import AddNewItem from "./AddNewItem";
 import { Column } from "./Column";
 import { addList } from "./state/actions";
 import { useAppState } from "./state/AppStateContext";
+import { CustomDragLayer } from "./CustomDragLayer";
 const App = () => {
   const { lists, dispatch } = useAppState();
 
@@ -17,7 +18,9 @@ const App = () => {
     <>
       <AppContainer>
         <AppHeader>Trello clone</AppHeader>
+
         <BodyContainer>
+          <CustomDragLayer />
           {lists.map(({ text, id }) => (
             <Column key={id} text={text} id={id} />
           ))}
