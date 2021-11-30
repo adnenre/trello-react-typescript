@@ -51,8 +51,8 @@ export const Column = ({ text, id, isPreview }: ColumnProps) => {
       isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
     >
       <ColumnTitle>{text}</ColumnTitle>
-      {tasks.map(({ text, id }) => (
-        <Card key={id} text={text} id={id} />
+      {tasks.map((task) => (
+        <Card key={task.id} text={task.text} id={task.id} columnId={id} />
       ))}
       <AddNewItem onAdd={handleAddTask} dark />
     </ColumnContainer>
