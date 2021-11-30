@@ -6,17 +6,17 @@ import { Action } from "./actions";
 const appData: AppState = {
   lists: [
     {
-      id: "0",
+      id: "1",
       text: "To Do",
       tasks: [{ id: "c1", text: "Generate app scaffold" }],
     },
     {
-      id: "1",
+      id: "2",
       text: "in Progress",
       tasks: [{ id: "c2", text: "Learn Typescript" }],
     },
     {
-      id: "2",
+      id: "3",
       text: "Done",
       tasks: [{ id: "c3", text: "Begin to use static type" }],
     },

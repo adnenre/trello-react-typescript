@@ -41,6 +41,7 @@ export const Card = ({ text, id, isPreview, columnId }: CardProps) => {
       ref={ref}
       isHidden={isHidden(draggedItem, "CARD", id, isPreview)}
       isPreview={isPreview}
+      id={id}
     >
       {text}
     </CardContainer>
