@@ -4,9 +4,20 @@ a simple clone of trello using react and typescript
 
 ## Getting started
 
+```bash
+# install frontend dependency
 npm install
 
+# switch to server directory
+cd server
+
+# install backend dependency
+npm install
+
+
+# run the app (Frontend / backend)
 npm run dev
+```
 
 don't forget to install package of the server ;)
 
