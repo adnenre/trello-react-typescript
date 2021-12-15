@@ -4,6 +4,7 @@ import { Column } from "./Column";
 import { addList } from "./state/actions";
 import { useAppState } from "./state/AppStateContext";
 import { CustomDragLayer } from "./CustomDragLayer";
+import TrelloLogo from "./Components/Logo";
 const App = () => {
   const { lists, dispatch } = useAppState();
 
@@ -17,7 +18,9 @@ const App = () => {
   return (
     <>
       <AppContainer>
-        <AppHeader>Trello clone</AppHeader>
+        <AppHeader>
+          <TrelloLogo />
+        </AppHeader>
 
         <BodyContainer>
           <CustomDragLayer />
@@ -25,6 +28,7 @@ const App = () => {
             <Column key={id} text={text} id={id} />
           ))}
           <AddNewItem
+            inputPlaceHolder="Enter a title for your column..."
             toggleButtonText="+ Add new Column "
             onAdd={handleAddColumn}
           />

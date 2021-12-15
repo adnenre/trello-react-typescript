@@ -1,14 +1,18 @@
 import React, { useState, useRef } from "react";
 import { useFocus } from "./hook/useFocus";
 import useOnClickOutside from "./hook/useOnClickOutside";
-import { NewItemFormContainer, Input, Button, ButtonContainer } from "./style";
+import { NewItemFormContainer, Input, Button } from "./style";
 
 type AddFormProps = {
   onAdd(text: string): void;
-  onHide(): void;
   onClickOutSide(): void;
+  inputPlaceHolder: string;
 };
-const NewItemForm = ({ onAdd, onClickOutSide, onHide }: AddFormProps) => {
+const NewItemForm = ({
+  onAdd,
+  onClickOutSide,
+  inputPlaceHolder,
+}: AddFormProps) => {
   const ref = useRef(null);
 
   const [text, setText] = useState<string>("");
@@ -45,9 +49,7 @@ const NewItemForm = ({ onAdd, onClickOutSide, onHide }: AddFormProps) => {
       handleAdd();
     }
   };
-  const handleHide = (e: React.MouseEvent<HTMLButtonElement>) => {
-    onHide();
-  };
+
   /**
    * CLICK OUTSIDE CONTAINER
    */
@@ -61,13 +63,12 @@ const NewItemForm = ({ onAdd, onClickOutSide, onHide }: AddFormProps) => {
         value={text}
         onChange={handleChange}
         onKeyPress={handleKeyPress}
+        placeholder={inputPlaceHolder}
       />
-      <ButtonContainer>
-        <Button success onClick={handleAdd}>
-          Confirm
-        </Button>
-        <Button onClick={handleHide}>Ignore</Button>
-      </ButtonContainer>
+
+      <Button success onClick={handleAdd}>
+        Confirme
+      </Button>
     </NewItemFormContainer>
   );
 };
