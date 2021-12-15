@@ -23,9 +23,9 @@ export const save = (payload: AppState) => {
 export const load = () => {
   return fetch(`${MAIN_URL}/load`).then((response) => {
     if (response.ok) {
-      return response.json() as Promise<AppState>;
+      return response.json();
     } else {
-      throw new Error("Error while loading the state.");
+      throw new Error("Error while saving the state");
     }
   });
 };
