@@ -9,4 +9,4 @@ npm install
 npm run dev
 
 don't forget to install package of the server ;)
-![alt text](https://https://github.com/adnenre/trello-react-typescript/blob/main/trello_clone_screen_shot.png)
+![alt text](https://github.com/adnenre/trello-react-typescript/blob/main/trello_clone_screen_shot.png)
