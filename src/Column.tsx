@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-import { ColumnContainer, ColumnTitle } from "./style";
+import { ColumnContainer, ColumnTitle, ColumnBody } from "./style";
 import AddNewItem from "./AddNewItem";
 import { Card } from "./Card";
 import { useAppState } from "./state/AppStateContext";
@@ -60,10 +60,13 @@ export const Column = ({ text, id, isPreview }: ColumnProps) => {
       isHidden={isHidden(draggedItem, "COLUMN", id, isPreview)}
     >
       <ColumnTitle>{text}</ColumnTitle>
-      {tasks?.map((task) => (
-        <Card key={task.id} text={task.text} id={task.id} columnId={id} />
-      ))}
-      <AddNewItem onAdd={handleAddTask} dark />
+
+      <ColumnBody>
+        {tasks?.map((task) => (
+          <Card key={task.id} text={task.text} id={task.id} columnId={id} />
+        ))}
+        <AddNewItem onAdd={handleAddTask} />
+      </ColumnBody>
     </ColumnContainer>
   );
 };
