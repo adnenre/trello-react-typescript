@@ -1,34 +1,29 @@
 import { useState } from "react";
-import { AddItemButton } from "./style";
+import { Button } from "./style";
 import NewItemForm from "./NewItemForm";
 
 type AddNewItemProps = {
   onAdd(text: string): void;
   onClickOutSide(): void;
   toggleButtonText: string;
-  dark?: boolean;
+  inputPlaceHolder?: string;
 } & typeof defaultProps;
 
 const defaultProps = {
   onAdd: console.log,
   onClickOutSide: console.log,
   toggleButtonText: "+ Add new Task",
-  dark: false,
+  inputPlaceHolder: "Enter a title for you card ...",
 };
 
 const AddNewItem = (props: AddNewItemProps) => {
   const [showForm, setShowForm] = useState<boolean>(false);
-  const { onAdd, toggleButtonText, dark } = props;
+  const { onAdd, toggleButtonText, inputPlaceHolder } = props;
 
   /**
    * SHOW  FORM
    */
   const handleShow = () => setShowForm(true);
-
-  /**
-   * HIDE FORM
-   */
-  const handleHide = () => setShowForm(false);
 
   /**
    * HANDLE ADD NEW ITEM
@@ -45,16 +40,16 @@ const AddNewItem = (props: AddNewItemProps) => {
   if (showForm) {
     return (
       <NewItemForm
+        inputPlaceHolder={inputPlaceHolder}
         onAdd={handleAddNewItem}
-        onHide={handleHide}
         onClickOutSide={handleClickOutSide}
       />
     );
   }
   return (
-    <AddItemButton dark={dark} onClick={handleShow}>
+    <Button primary onClick={handleShow}>
       {toggleButtonText}
-    </AddItemButton>
+    </Button>
   );
 };
 
