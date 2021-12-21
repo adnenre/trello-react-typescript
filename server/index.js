@@ -3,7 +3,7 @@ const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const jwt = require("jsonwebtoken");
-const users = require("./fakeDb");
+const fakeData = require("./fakeDb");
 dotenv.config();
 
 // verify header
@@ -22,7 +22,8 @@ app.use(bodyParser.json());
 
 const port = process.env.PORT || 5500;
 
-let lists = [];
+let lists = [...fakeData.lists];
+let users = [...fakeData.users];
 
 // FAKE DB USERS
 
@@ -48,10 +49,11 @@ app.post("/login", (req, res) => {
 
 // SAVE ROUTE NEEDED WHILE DRAGGING
 app.post("/save", (req, res) => {
-  console.log(req.body);
   lists = req.body.lists;
   return res.json({ success: true });
 });
+
+//
 app.get("/load", (req, res) => res.json({ lists }));
 
 const logRunningServer = () => console.log(`Server is running on ${port}`);

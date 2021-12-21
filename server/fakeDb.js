@@ -1,4 +1,4 @@
-const users = [
+let users = [
   {
     id: 1,
     username: "JHON DOE",
@@ -19,4 +19,9 @@ const users = [
   },
 ];
 
-module.exports = users;
+let lists = [
+  { id: "1640124595272-0cy9trqth", text: "Todo", tasks: [] },
+  { id: "1640124611671-sa10s6543", text: "In progress", tasks: [] },
+  { id: "1640124618637-hn0grc5ai", text: "Done", tasks: [] },
+];
+module.exports = { users, lists };
