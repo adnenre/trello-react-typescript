@@ -36,6 +36,7 @@ const Login = ({ backendResponce, onSubmit }: LoginProps) => {
         <p>
           <b>Sign in</b>
         </p>
+        {/* TODO : add user data validation for username and password without library */}
         <input
           type="text"
           name="username"
