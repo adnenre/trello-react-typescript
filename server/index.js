@@ -2,7 +2,19 @@ const express = require("express");
 const dotenv = require("dotenv");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const jwt = require("jsonwebtoken");
+const users = require("./fakeDb");
 dotenv.config();
+
+// verify header
+const verifyToken = (req, res, next) => {
+  const bearerHeader = req.header["authorization"];
+  if (typeof bearerHeader != "undefined") {
+    const bearerHeader = bearerHeader.split(" ")[1];
+    req.token = bearerToken;
+    next();
+  }
+};
 
 const app = express();
 app.use(cors());
@@ -12,6 +24,29 @@ const port = process.env.PORT || 5500;
 
 let lists = [];
 
+// FAKE DB USERS
+
+// LOGING ROUTE
+app.post("/login", (req, res) => {
+  const user = users.find(({ username }) => username === req.body.username);
+
+  if (user) {
+    jwt.sign({ user: user }, "secretkey", (err, accessToken) => {
+      res.json({
+        status: 1,
+        accessToken,
+      });
+    });
+  } else {
+    res.json({
+      status: 0,
+      message: "User Not Found !",
+      hints: "try username : trello, password : trello ",
+    });
+  }
+});
+
+// SAVE ROUTE NEEDED WHILE DRAGGING
 app.post("/save", (req, res) => {
   console.log(req.body);
   lists = req.body.lists;
@@ -20,4 +55,5 @@ app.post("/save", (req, res) => {
 app.get("/load", (req, res) => res.json({ lists }));
 
 const logRunningServer = () => console.log(`Server is running on ${port}`);
+
 app.listen(port, logRunningServer);
