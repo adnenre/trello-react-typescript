@@ -25,17 +25,17 @@ export function withInitialState<TProps>(
           setInitialState(data);
         } catch (e: any) {
           setError(e);
-          console.log(e);
+          // display error page
         }
         setIsLoading(false);
       };
       fetchInitialState();
     }, []);
     if (isLoading) {
-      return <Loading />;
+      return <Loading message="Loading..." />;
     }
     if (error) {
-      return <div>{error.message}</div>;
+      return <Loading error message={error.message} />;
     }
     return <WrappedComponent initialState={initialState} {...props} />;
   };
