@@ -1,6 +1,5 @@
 import axios from "axios";
-
-const MAIN_URL = process.env.REACT_APP_BACKEND_ENDPOINT;
+import { MAIN_URL } from "./config";
 
 class AuthService {
   // LOGIN SERVICE
