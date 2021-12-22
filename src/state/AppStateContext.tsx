@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, Dispatch } from "react";
 import { AppState, appStateReducer, List, Task } from "./appStateReducer";
-import { withInitialState } from "../withInitialState";
+import { withInitialState } from "../HOC/withInitialState";
 import { useImmerReducer } from "use-immer";
-import { DragItem } from "../DragItem";
+import { DragItem } from "../types/DragItem";
 import { Action } from "./actions";
-import { save } from "../api";
+import TrelloService from "../services/TrelloService";
 
 type AppStateProviderProps = {
   children: React.ReactNode;
@@ -41,7 +41,7 @@ const AppStateProvider = withInitialState<AppStateProviderProps>(
      * save the state when it change
      */
     useEffect(() => {
-      save(state);
+      TrelloService.save(state);
     }, [state]);
     return (
       <Provider value={{ draggedItem, lists, getTasksByListId, dispatch }}>

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Button } from "./style";
-import NewItemForm from "./NewItemForm";
+import { Button } from "../style";
+import NewItemForm from "../NewItemForm";
 
 type AddNewItemProps = {
   onAdd(text: string): void;

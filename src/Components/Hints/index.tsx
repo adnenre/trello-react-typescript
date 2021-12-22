@@ -14,7 +14,6 @@ const Hints = ({ message }: HintsProps) => {
           <HintsBoxIcon>
             <FontAwesomeIcon icon={faExclamationCircle} />
           </HintsBoxIcon>
-
           <HintsBoxMessage>{message}</HintsBoxMessage>
         </HintsBox>
       </>

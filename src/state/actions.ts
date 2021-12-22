@@ -1,4 +1,4 @@
-import { DragItem } from "../DragItem";
+import { DragItem } from "../types/DragItem";
 
 /**
  * ACTION TYPES
@@ -40,9 +40,9 @@ export type Action =
 /**
  * ACTION CREATOR
  */
-export const addList = (text: string): Action => ({
+export const addList = (title: string): Action => ({
   type: "ADD_LIST",
-  payload: text,
+  payload: title,
 });
 
 export const addTask = (text: string, listId: string): Action => ({
