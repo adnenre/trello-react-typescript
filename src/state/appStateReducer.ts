@@ -1,6 +1,6 @@
 import { Action } from "./actions";
 import { uniqueId } from "../utils/uniqueId";
-import { DragItem } from "../DragItem";
+import { DragItem } from "../types/DragItem";
 import {
   findItemIndexById,
   removeItemAtIndex,
@@ -14,7 +14,7 @@ export type Task = {
 
 export type List = {
   id: string;
-  text: string;
+  title: string;
   tasks: Task[];
 };
 
@@ -31,7 +31,7 @@ export const appStateReducer = (
     case "ADD_LIST": {
       draft.lists.push({
         id: uniqueId(),
-        text: action.payload,
+        title: action.payload,
         tasks: [],
       });
       break;

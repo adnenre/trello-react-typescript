@@ -7,7 +7,7 @@ export type CardDragItem = {
 
 export type ColumnDragItem = {
   id: string;
-  text: string;
+  title: string;
   type: "COLUMN";
 };
 

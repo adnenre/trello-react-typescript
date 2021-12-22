@@ -1,4 +1,4 @@
-import { DragItem } from "../DragItem";
+import { DragItem } from "../types/DragItem";
 
 export const isHidden = (
   draggedItem: DragItem | null,
