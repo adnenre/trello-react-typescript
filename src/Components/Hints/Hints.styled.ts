@@ -6,9 +6,9 @@ type HintsType = {
 };
 export const HintsBox = styled.div<HintsType>`
   padding: 5px 10px;
-  background-color: ${({ danger, success }) => {
-    if (danger) return "#ff8a65";
-    if (success) return "#5aac44";
+  background-color: ${({ danger, success, theme }) => {
+    if (danger) return theme.colors.danger;
+    if (success) return theme.colors.success;
     return;
   }};
   display: flex;
