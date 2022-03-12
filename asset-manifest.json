@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/adnenre.github.io/trello-react-typescript/static/css/main.01551292.css",
-    "main.js": "/adnenre.github.io/trello-react-typescript/static/js/main.80459fc5.js",
-    "index.html": "/adnenre.github.io/trello-react-typescript/index.html",
-    "main.01551292.css.map": "/adnenre.github.io/trello-react-typescript/static/css/main.01551292.css.map",
-    "main.80459fc5.js.map": "/adnenre.github.io/trello-react-typescript/static/js/main.80459fc5.js.map"
+    "main.css": "/trello-react-typescript/static/css/main.01551292.css",
+    "main.js": "/trello-react-typescript/static/js/main.e8c2234f.js",
+    "index.html": "/trello-react-typescript/index.html",
+    "main.01551292.css.map": "/trello-react-typescript/static/css/main.01551292.css.map",
+    "main.e8c2234f.js.map": "/trello-react-typescript/static/js/main.e8c2234f.js.map"
   },
   "entrypoints": [
     "static/css/main.01551292.css",
-    "static/js/main.80459fc5.js"
+    "static/js/main.e8c2234f.js"
   ]
 }
