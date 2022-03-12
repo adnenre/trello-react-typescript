@@ -1,7 +1,7 @@
 {
   "name": "trello-clone",
   "version": "0.1.0",
-  "homepage": "adnenre.github.io/trello-react-typescript",
+  "homepage": "https://adnenre.github.io/trello-react-typescript",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
