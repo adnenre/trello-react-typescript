@@ -1,6 +1,12 @@
-# trello-clone
+## trello-clone
 
-a simple clone of trello using react and typescript with no ui library / jwt authentication / node / express
+Simple clone of trello using react and typescript with no ui library / jwt authentication / node / express
+
+## Demo
+
+Check the [Demo](https://adnenre.github.io/trello-react-typescript/)
+username : trello
+password : trello
 
 ## Getting started
 
