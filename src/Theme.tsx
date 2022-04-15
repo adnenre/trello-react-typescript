@@ -1,18 +1,22 @@
 import React from "react";
-import { ThemeProvider } from "styled-components";
 
-const theme = {
-  colors: {
-    primary: "#30b4ff",
-    primaryHover: "#4fc3f7",
-    success: "#5aac44",
-    successHover: "#81c784",
-    warning: "#ff8a65",
-    danger: "#ff8a65",
-    white: "#fff",
-    gray: "#eff3f8",
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+  palette: {
+    primary: { main: "#30b4ff" },
+
+    success: { main: "#5aac44" },
+    // successHover: "#81c784",
+    warning: { main: "#ff8a65" },
+    // danger: {main:"#ff8a65"},
+    // white: "#fff",
+    // gray: "#eff3f8",
   },
-};
+  shape: {
+    borderRadius: 5,
+  },
+});
 
 type ThemeProps = {
   children: React.ReactNode;

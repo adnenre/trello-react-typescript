@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 import Login from "../Login";
-import { Userlogin } from "../Login/type";
+import { Userlogin, UserRegister } from "../Login/type";
 import AuthService from "../services/AuthService";
 
 const App = () => {
@@ -15,12 +15,23 @@ const App = () => {
    */
   const handleSubmit = async (data: Userlogin) => {
     const { username, password } = data;
-    // if (username === "test" && password === "test") {
-    //   navigate("/Dashboard");
-    // }
+
     let responce = await AuthService.login(username, password);
+
     if (responce.status) {
       navigate("/Dashboard");
+    } else {
+      setBackendResponce(responce);
+      setTimeout(() => setBackendResponce(null), 3000);
+    }
+  };
+  const handleRegister = async (data: UserRegister) => {
+    let responce = await AuthService.register(data);
+
+    if (responce.status) {
+      // navigate("/Dashboard");
+      setBackendResponce(responce);
+      setTimeout(() => setBackendResponce(null), 3000);
     } else {
       setBackendResponce(responce);
       setTimeout(() => setBackendResponce(null), 3000);
@@ -30,7 +41,11 @@ const App = () => {
     <>
       <AppContainer>
         <BodyContainer>
-          <Login onSubmit={handleSubmit} backendResponce={backendResponce} />
+          <Login
+            onSubmit={handleSubmit}
+            onRegister={handleRegister}
+            backendResponce={backendResponce}
+          />
         </BodyContainer>
       </AppContainer>
     </>

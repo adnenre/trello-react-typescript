@@ -22,11 +22,11 @@ export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
     } 
   `;
 export const AppContainer = styled.div`
-  background: linear-gradient(135deg, #442274, #6ca2f1);
+  background: linear-gradient(281deg, #442274, #007ac3);
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: 10px;
+
   width: 100%;
 `;
 export const AppHeader = styled.div`

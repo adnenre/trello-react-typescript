@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
-type HintsType = {
+type Notificationtype = {
   danger?: Boolean;
   success?: Boolean;
 };
-export const HintsBox = styled.div<HintsType>`
+export const NotificationBox = styled.div<Notificationtype>`
   padding: 5px 10px;
   background-color: ${({ danger, success, theme }) => {
     if (danger) return theme.colors.danger;
@@ -12,17 +12,22 @@ export const HintsBox = styled.div<HintsType>`
     return;
   }};
   display: flex;
-
+  width: 100%;
   font-size: 12px;
   color: white;
   border-radius: 10px;
 `;
 
-export const HintsBoxIcon = styled.div`
+export const NotificationBoxIcon = styled.div`
   width: 15px;
   color: white;
 `;
-export const HintsBoxMessage = styled.div`
+export const NofiticationMessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
+export const NotificationMessage = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;

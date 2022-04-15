@@ -7,14 +7,14 @@ const fakeData = require("./fakeDb");
 dotenv.config();
 
 // verify header
-const verifyToken = (req, res, next) => {
-  const bearerHeader = req.header["authorization"];
-  if (typeof bearerHeader != "undefined") {
-    const bearerHeader = bearerHeader.split(" ")[1];
-    req.token = bearerToken;
-    next();
-  }
-};
+// const verifyToken = (req, res, next) => {
+//   const bearerHeader = req.header["authorization"];
+//   if (typeof bearerHeader != "undefined") {
+//     const bearerHeader = bearerHeader.split(" ")[1];
+//     req.token = bearerToken;
+//     next();
+//   }
+// };
 
 const app = express();
 app.use(cors());
@@ -25,11 +25,32 @@ const port = process.env.PORT || 5500;
 let lists = [...fakeData.lists];
 let users = [...fakeData.users];
 
+const findUser = (data) => {
+  const user = users.find(({ username }) => username === data.username);
+  return user;
+};
 // FAKE DB USERS
-
+// REGISTER ROUTE
+app.post("/register", (req, res) => {
+  const user = findUser(req.body);
+  if (user) {
+    res.json({
+      status: 0,
+      message: "User alreay exist !",
+    });
+  } else {
+    const { username, email, password } = req.body;
+    let newUser = { username, email, password };
+    users.push({ id: users.length + 1, ...newUser });
+    res.json({
+      status: 1,
+      message: `${req.body.username} created successfully !`,
+    });
+  }
+});
 // LOGING ROUTE
 app.post("/login", (req, res) => {
-  const user = users.find(({ username }) => username === req.body.username);
+  const user = findUser(req.body);
 
   if (user) {
     jwt.sign({ user: user }, "secretkey", (err, accessToken) => {
