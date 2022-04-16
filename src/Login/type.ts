@@ -9,3 +9,9 @@ export type UserRegister = {
   password: string;
   confirmePassword: string;
 };
+
+export type backendRespnce = {
+  status: number;
+  message: string;
+  hints?: string;
+};
