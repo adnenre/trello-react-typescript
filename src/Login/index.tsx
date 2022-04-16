@@ -1,18 +1,18 @@
-import * as React from "react";
+import { useState } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
 import Box from "@mui/material/Box";
 
-import { useState } from "react";
 import { LoginContainer, LoginPage } from "./Login.styled";
 
-import { Userlogin, UserRegister } from "./type";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
-import STextField from "../Components/TextField";
-import TButton from "../Components/Button";
+import { backendRespnce } from "./type";
+import { Alert, Stack } from "@mui/material";
 import TrelloLogo from "../Components/Logo";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
+
+import { Userlogin, UserRegister } from "./type";
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -42,67 +42,27 @@ function a11yProps(index: number) {
   };
 }
 
-type backendRespnce = {
-  status: number;
-  message: string;
-  hints?: string;
-};
 type LoginProps = {
   onSubmit(data: Userlogin): void;
   onRegister(data: UserRegister): void;
   backendResponce: backendRespnce | null;
 };
 const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
-  const [value, setValue] = React.useState(0);
+  const [activeTab, setActiveTab] = useState(0);
 
-  const [userInfo, setUserInfo] = useState<Userlogin>({
-    username: "",
-    password: "",
-  });
-  const [userRegisterInfo, setUserRegisterInfo] = useState<UserRegister>({
-    username: "",
-    email: "",
-    password: "",
-    confirmePassword: "",
-  });
-  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+  const handleChangeTab = (event: React.SyntheticEvent, currentTab: number) => {
+    setActiveTab(currentTab);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
+  const handleLogin = (data: Userlogin) => {
+    onSubmit(data);
   };
-  const handleChangeRegister = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserRegisterInfo({
-      ...userRegisterInfo,
-      [e.target.name]: e.target.value,
-    });
+  const handleRegister = (data: UserRegister) => {
+    onRegister(data);
   };
-  const handleSubmit = () => {
-    onSubmit(userInfo);
-  };
-  const handleRegister = () => {
-    onRegister(userRegisterInfo);
-  };
+
   return (
     <LoginPage>
-      <Stack
-        sx={{
-          width: "370px",
-          position: "absolute",
-          left: "50%",
-          top: "10%",
-          transform: "translate(-50%,35%)",
-        }}
-        spacing={1}
-      >
-        {backendResponce?.message && (
-          <Alert severity="error"> {backendResponce?.message}</Alert>
-        )}
-        {backendResponce?.hints && (
-          <Alert severity="info">{backendResponce?.hints}</Alert>
-        )}
-      </Stack>
       <LoginContainer>
         <Box sx={{ width: "400px", background: "white", borderRadius: "10px" }}>
           <Box
@@ -110,6 +70,7 @@ const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
           >
             <TrelloLogo />
           </Box>
+
           <Box
             sx={{
               boxShadow: "0 0 20px 8px #b1b6f39c",
@@ -126,7 +87,7 @@ const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
               }}
             >
               <Tabs
-                value={value}
+                value={activeTab}
                 onChange={handleChangeTab}
                 aria-label="login tabs"
                 sx={{
@@ -148,7 +109,7 @@ const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
                     textTransform: "capitalize",
                     minHeight: "50px",
                     "&.Mui-selected": {
-                      background: "#30b4ff",
+                      background: "#5aac44",
                       color: "white",
                       border: " solid 4px white",
                       borderRadius: "10px 10px 10px 20px",
@@ -158,6 +119,7 @@ const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
                   {...a11yProps(0)}
                 />
                 <Tab
+                  label="Register"
                   sx={{
                     fontSize: "1rem",
                     minWidth: "100px",
@@ -170,85 +132,32 @@ const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
                       borderRadius: "10px 10px 20px 10px",
                     },
                   }}
-                  label="Register"
                   {...a11yProps(1)}
                 />
               </Tabs>
             </Box>
-            <TabPanel value={value} index={0}>
-              {/* TODO : add user data validation for username and password without library */}
-              <Stack direction="column" spacing={2}>
-                <STextField
-                  name="username"
-                  label="Username"
-                  value={userInfo.username}
-                  onChange={handleChange}
-                />
-                <STextField
-                  name="password"
-                  label="Password"
-                  value={userInfo.password}
-                  onChange={handleChange}
-                />
-              </Stack>
+            <TabPanel value={activeTab} index={0}>
+              <LoginForm onLogin={handleLogin} />
             </TabPanel>
-            <TabPanel value={value} index={1}>
-              <Stack direction="column" spacing={2}>
-                <STextField
-                  name="username"
-                  label="Username"
-                  value={userRegisterInfo.username}
-                  onChange={handleChangeRegister}
-                />
-                <STextField
-                  name="email"
-                  label="email"
-                  value={userRegisterInfo.email}
-                  onChange={handleChangeRegister}
-                />
-                <STextField
-                  name="password"
-                  label="Password"
-                  value={userRegisterInfo.password}
-                  onChange={handleChangeRegister}
-                />
-                <STextField
-                  name="confirmePassword"
-                  label="Password Confirme"
-                  value={userRegisterInfo.confirmePassword}
-                  onChange={handleChangeRegister}
-                />
-              </Stack>
+            <TabPanel value={activeTab} index={1}>
+              <RegisterForm onRegister={handleRegister} />
             </TabPanel>
           </Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "center",
               padding: "1rem 0",
-              width: "70%",
+              width: "350px",
               margin: "auto",
             }}
           >
-            {value === 0 ? (
-              <TButton
-                color="primary"
-                variant="contained"
-                onClick={handleSubmit}
-                fullWidth
-              >
-                Login
-              </TButton>
-            ) : (
-              <TButton
-                color="success"
-                variant="contained"
-                onClick={handleRegister}
-                fullWidth
-              >
-                Register
-              </TButton>
-            )}
+            <Stack spacing={1}>
+              {backendResponce?.message && (
+                <Alert severity="error"> {backendResponce?.message}</Alert>
+              )}
+              {backendResponce?.hints && (
+                <Alert severity="info">{backendResponce?.hints}</Alert>
+              )}
+            </Stack>
           </Box>
         </Box>
       </LoginContainer>

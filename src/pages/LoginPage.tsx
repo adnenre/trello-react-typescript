@@ -29,9 +29,7 @@ const App = () => {
     let responce = await AuthService.register(data);
 
     if (responce.status) {
-      // navigate("/Dashboard");
-      setBackendResponce(responce);
-      setTimeout(() => setBackendResponce(null), 3000);
+      navigate("/Dashboard");
     } else {
       setBackendResponce(responce);
       setTimeout(() => setBackendResponce(null), 3000);
