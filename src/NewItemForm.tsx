@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import { useFocus } from "./hook/useFocus";
 import useOnClickOutside from "./hook/useOnClickOutside";
-import { NewItemFormContainer, Input, Button } from "./style";
-
+import { NewItemFormContainer, Input } from "./style";
+import TButton from "./Components/Button";
 type AddFormProps = {
   onAdd(text: string): void;
   onClickOutSide(): void;
@@ -66,9 +66,9 @@ const NewItemForm = ({
         placeholder={inputPlaceHolder}
       />
 
-      <Button success onClick={handleAdd}>
+      <TButton color="success" variant="contained" onClick={handleAdd}>
         Confirme
-      </Button>
+      </TButton>
     </NewItemFormContainer>
   );
 };

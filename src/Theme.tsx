@@ -9,7 +9,7 @@ const theme = createTheme({
     success: { main: "#5aac44" },
     // successHover: "#81c784",
     warning: { main: "#ff8a65" },
-    // danger: {main:"#ff8a65"},
+    info: { main: "#f9f9f9f" },
     // white: "#fff",
     // gray: "#eff3f8",
   },

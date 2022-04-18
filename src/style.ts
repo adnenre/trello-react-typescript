@@ -28,6 +28,7 @@ export const AppContainer = styled.div`
   height: 100%;
 
   width: 100%;
+  padding: 1rem;
 `;
 export const AppHeader = styled.div`
   background-color: #ffffff;
@@ -79,15 +80,15 @@ export const Button = styled.button<ButtonType>`
   min-width: 75px;
   transition: 0.3s;
   background-color: ${({ primary, success, theme }) => {
-    if (primary) return theme.colors.primary;
-    if (success) return theme.colors.success;
-    return theme.colors.gray;
+    if (primary) return theme.palette.primary.main;
+    if (success) return theme.palette.success.main;
+    return theme.palette.info.main;
   }};
   &:hover {
     background-color: ${({ primary, success, theme }) => {
-      if (primary) return theme.colors.primaryHover;
-      if (success) return theme.colors.successHover;
-      return theme.colors.gray;
+      if (primary) return theme.palette.primary.main;
+      if (success) return theme.palette.success.main;
+      return theme.palette.info.main;
     }};
   }
 `;

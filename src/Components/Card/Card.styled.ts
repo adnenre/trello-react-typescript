@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { DragPreviewContainer } from "../../style";
 
 export const CardContainer = styled(DragPreviewContainer)`
-  background-color: ${({ theme }) => theme.colors.white}};
+  background-color: white;
   cursor: pointer;
   margin-bottom: 0.5rem;
   padding: 0.5rem 1rem;

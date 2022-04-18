@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button } from "../style";
+import TButton from "../Components/Button";
 import NewItemForm from "../NewItemForm";
 
 type AddNewItemProps = {
@@ -47,9 +47,9 @@ const AddNewItem = (props: AddNewItemProps) => {
     );
   }
   return (
-    <Button primary onClick={handleShow}>
+    <TButton color="primary" variant="contained" onClick={handleShow}>
       {toggleButtonText}
-    </Button>
+    </TButton>
   );
 };
 

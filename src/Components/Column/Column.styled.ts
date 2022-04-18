@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { DragPreviewContainer } from "../../style";
 
 export const ColumnContainer = styled(DragPreviewContainer)`
-  background-color: ${({ theme }) => theme.colors.gray}};
+  background-color: #f9f9f9;
   width: 300px;
   min-height: 40px;
   margin-right: 20px;
