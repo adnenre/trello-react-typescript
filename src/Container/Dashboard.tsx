@@ -1,10 +1,11 @@
-import { AppContainer, BodyContainer, AppHeader } from "../style";
+import { AppContainer, BodyContainer } from "../style";
+import AppHeader from "./AppHeader";
 import AddNewItem from "./AddNewItem";
 import { List } from "./List";
 import { addList } from "../state/actions";
 import { useAppState } from "../state/AppStateContext";
 import { CustomDragLayer } from "../Components/DragLayer/CustomDragLayer";
-import TrelloLogo from "../Components/Logo";
+
 const Dashboard = () => {
   const { lists, dispatch } = useAppState();
 
@@ -18,9 +19,7 @@ const Dashboard = () => {
   return (
     <>
       <AppContainer>
-        <AppHeader>
-          <TrelloLogo />
-        </AppHeader>
+        <AppHeader />
 
         <BodyContainer>
           <CustomDragLayer />
