@@ -26,7 +26,7 @@ export const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   height: 100%;
-
+  gap: 1rem;
   width: 100%;
   padding: 1rem;
 `;
