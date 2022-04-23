@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Stack } from "@mui/material";
 import STextField from "../Components/TextField";
-import TButton from "../Components/Button";
+
+import { TLoadingButton } from "../Components/Button";
 import { UserRegister } from "./type";
 type RegisterProps = {
   onRegister(data: UserRegister): void;
+  loading: boolean;
 };
-const RegisterForm = ({ onRegister }: RegisterProps) => {
+const RegisterForm = ({ onRegister, loading }: RegisterProps) => {
   // USER INFO STATE
   const [userRegisterInfo, setUserRegisterInfo] = useState<UserRegister>({
     username: "",
@@ -60,9 +62,16 @@ const RegisterForm = ({ onRegister }: RegisterProps) => {
           onChange={handleChangeInput}
           required
         />
-        <TButton color="success" variant="contained" type="submit" fullWidth>
+        <TLoadingButton
+          loading={loading}
+          loadingPosition="end"
+          color="success"
+          variant="contained"
+          type="submit"
+          fullWidth
+        >
           Register
-        </TButton>
+        </TLoadingButton>
       </Stack>
     </form>
   );

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Stack } from "@mui/material";
 import STextField from "../Components/TextField";
-import TButton from "../Components/Button";
+//import TButton from "../Components/Button";
+import { TLoadingButton } from "../Components/Button";
 import { Userlogin } from "./type";
 type LoginProps = {
   onLogin(data: Userlogin): void;
+  loading: boolean;
 };
-const LoginForm = ({ onLogin }: LoginProps) => {
+const LoginForm = ({ onLogin, loading }: LoginProps) => {
   // USER INFO STATE
   const [userLoginInfo, setuserLoginInfo] = useState<Userlogin>({
     username: "",
@@ -25,6 +27,7 @@ const LoginForm = ({ onLogin }: LoginProps) => {
   // ON LOGIN SUBMIT
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
     onLogin(userLoginInfo);
   };
   return (
@@ -45,9 +48,16 @@ const LoginForm = ({ onLogin }: LoginProps) => {
           onChange={handleChangeInput}
           required
         />
-        <TButton color="success" variant="contained" type="submit" fullWidth>
+        <TLoadingButton
+          loading={loading}
+          loadingPosition="end"
+          color="success"
+          variant="contained"
+          type="submit"
+          fullWidth
+        >
           Login
-        </TButton>
+        </TLoadingButton>
       </Stack>
     </form>
   );
