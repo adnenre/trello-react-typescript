@@ -16,9 +16,12 @@ const StyledLoadingButton = styled(LoadingButton)(({ theme }) => ({
   padding: theme.spacing(1),
   color: "white",
   borderRadius: theme.shape.borderRadius,
+  "&.MuiLoadingButton-loading": {
+    background: "white",
+  },
 }));
 
 const TLoadingButton = (props: LoadingButtonProps) => {
-  return <StyledLoadingButton {...props} />;
+  return <StyledLoadingButton sx={{}} {...props} />;
 };
 export { TLoadingButton, TButton };
