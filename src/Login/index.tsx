@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 
@@ -49,17 +49,23 @@ type LoginProps = {
 };
 const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
   const [activeTab, setActiveTab] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const handleChangeTab = (event: React.SyntheticEvent, currentTab: number) => {
     setActiveTab(currentTab);
   };
 
   const handleLogin = (data: Userlogin) => {
+    setLoading(true);
     onSubmit(data);
   };
   const handleRegister = (data: UserRegister) => {
+    setLoading(true);
     onRegister(data);
   };
+  useEffect(() => {
+    setLoading(false);
+  }, [backendResponce?.message]);
 
   return (
     <LoginPage>
@@ -137,10 +143,10 @@ const Login = ({ backendResponce, onSubmit, onRegister }: LoginProps) => {
               </Tabs>
             </Box>
             <TabPanel value={activeTab} index={0}>
-              <LoginForm onLogin={handleLogin} />
+              <LoginForm onLogin={handleLogin} loading={loading} />
             </TabPanel>
             <TabPanel value={activeTab} index={1}>
-              <RegisterForm onRegister={handleRegister} />
+              <RegisterForm onRegister={handleRegister} loading={loading} />
             </TabPanel>
           </Box>
           <Box

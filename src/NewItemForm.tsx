@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { useFocus } from "./hook/useFocus";
 import useOnClickOutside from "./hook/useOnClickOutside";
 import { NewItemFormContainer, Input } from "./style";
-import TButton from "./Components/Button";
+import { TButton } from "./Components/Button";
 type AddFormProps = {
   onAdd(text: string): void;
   onClickOutSide(): void;

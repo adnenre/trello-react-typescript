@@ -1,5 +1,5 @@
 import { useState } from "react";
-import TButton from "../Components/Button";
+import { TButton } from "../Components/Button";
 import NewItemForm from "../NewItemForm";
 
 type AddNewItemProps = {
