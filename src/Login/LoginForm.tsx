@@ -4,6 +4,7 @@ import STextField from "../Components/TextField";
 //import TButton from "../Components/Button";
 import { TLoadingButton } from "../Components/Button";
 import { Userlogin } from "./type";
+import { useTitle } from "../hook/useTitle";
 type LoginProps = {
   onLogin(data: Userlogin): void;
   loading: boolean;
@@ -27,9 +28,9 @@ const LoginForm = ({ onLogin, loading }: LoginProps) => {
   // ON LOGIN SUBMIT
   const onSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
     onLogin(userLoginInfo);
   };
+  useTitle("Login");
   return (
     <form onSubmit={onSubmit}>
       <Stack direction="column" spacing={2}>

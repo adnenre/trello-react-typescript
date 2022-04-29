@@ -4,6 +4,7 @@ import STextField from "../Components/TextField";
 
 import { TLoadingButton } from "../Components/Button";
 import { UserRegister } from "./type";
+import { useTitle } from "../hook/useTitle";
 type RegisterProps = {
   onRegister(data: UserRegister): void;
   loading: boolean;
@@ -31,6 +32,7 @@ const RegisterForm = ({ onRegister, loading }: RegisterProps) => {
     e.preventDefault();
     onRegister(userRegisterInfo);
   };
+  useTitle("Register");
   return (
     <form onSubmit={onSubmit}>
       <Stack direction="column" spacing={2}>

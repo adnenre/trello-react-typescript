@@ -5,7 +5,7 @@ import { List } from "./List";
 import { addList } from "../state/actions";
 import { useAppState } from "../state/AppStateContext";
 import { CustomDragLayer } from "../Components/DragLayer/CustomDragLayer";
-
+import { useTitle } from "../hook/useTitle";
 const Dashboard = () => {
   const { lists, dispatch } = useAppState();
 
@@ -16,6 +16,7 @@ const Dashboard = () => {
   const handleAddColumn = (title: string) => {
     dispatch(addList(title));
   };
+  useTitle("Dashboard");
   return (
     <>
       <AppContainer>
