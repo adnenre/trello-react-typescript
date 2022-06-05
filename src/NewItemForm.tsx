@@ -1,8 +1,8 @@
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { useFocus } from "./hook/useFocus";
 import useOnClickOutside from "./hook/useOnClickOutside";
 import { NewItemFormContainer, Input } from "./style";
-import { TButton } from "./Components/Button";
+import Button from "@mui/material/Button";
 type AddFormProps = {
   onAdd(text: string): void;
   onClickOutSide(): void;
@@ -66,9 +66,9 @@ const NewItemForm = ({
         placeholder={inputPlaceHolder}
       />
 
-      <TButton color="success" variant="contained" onClick={handleAdd}>
+      <Button color="success" variant="contained" onClick={handleAdd}>
         Confirme
-      </TButton>
+      </Button>
     </NewItemFormContainer>
   );
 };
