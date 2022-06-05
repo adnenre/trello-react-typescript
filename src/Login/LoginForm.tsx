@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Stack } from "@mui/material";
+import { Stack, FormControlLabel, Checkbox, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 import STextField from "../Components/TextField";
 //import TButton from "../Components/Button";
 import { TLoadingButton } from "../Components/Button";
@@ -10,6 +11,9 @@ type LoginProps = {
   loading: boolean;
 };
 const LoginForm = ({ onLogin, loading }: LoginProps) => {
+  // REMEMBER USER CREDENTIAL CHECKED
+  const [checked, setChecked] = useState(false);
+
   // USER INFO STATE
   const [userLoginInfo, setuserLoginInfo] = useState<Userlogin>({
     username: "",
@@ -30,6 +34,8 @@ const LoginForm = ({ onLogin, loading }: LoginProps) => {
     e.preventDefault();
     onLogin(userLoginInfo);
   };
+  // HANDLE CHECKED REMEMBER ME
+  const handleChecked = (e) => setChecked(e.target.checked);
   useTitle("Login");
   return (
     <form onSubmit={onSubmit}>
@@ -41,7 +47,6 @@ const LoginForm = ({ onLogin, loading }: LoginProps) => {
           onChange={handleChangeInput}
           required
         />
-
         <STextField
           name="password"
           label="Password"
@@ -49,6 +54,24 @@ const LoginForm = ({ onLogin, loading }: LoginProps) => {
           onChange={handleChangeInput}
           required
         />
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <FormControlLabel
+            control={
+              <Checkbox
+                checked={checked}
+                onChange={handleChecked}
+                name="checked"
+                color="success"
+              />
+            }
+            color="#ffffff"
+            label="Remember me"
+          />
+        </Stack>
         <TLoadingButton
           loading={loading}
           loadingPosition="end"
@@ -59,6 +82,19 @@ const LoginForm = ({ onLogin, loading }: LoginProps) => {
         >
           Login
         </TLoadingButton>
+
+        <Typography
+          variant="subtitle2"
+          color="success"
+          sx={{
+            textAlign: "center",
+            textDecoration: "none",
+            cursor: "pointer",
+            color: "#ffffff",
+          }}
+        >
+          <Link to="/resetPassword">Forgot Password?</Link>
+        </Typography>
       </Stack>
     </form>
   );
