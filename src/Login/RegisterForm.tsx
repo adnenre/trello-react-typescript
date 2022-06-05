@@ -46,6 +46,7 @@ const RegisterForm = ({ onRegister, loading }: RegisterProps) => {
         <STextField
           name="email"
           label="email"
+          type="email"
           value={userRegisterInfo.email}
           onChange={handleChangeInput}
           required

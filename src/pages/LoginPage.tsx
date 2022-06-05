@@ -5,6 +5,7 @@ import { useState } from "react";
 import Login from "../Login";
 import { Userlogin, UserRegister } from "../Login/type";
 import AuthService from "../services/AuthService";
+import { useTitle } from "../hook/useTitle";
 
 const App = () => {
   const [backendResponce, setBackendResponce] = useState(null);
@@ -35,6 +36,8 @@ const App = () => {
       setTimeout(() => setBackendResponce(null), 3000);
     }
   };
+  // update title
+  useTitle("Login");
   return (
     <>
       <AppContainer>
