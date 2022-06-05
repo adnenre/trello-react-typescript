@@ -7,23 +7,33 @@ class AuthService {
     return axios
       .post(`${MAIN_URL}/login`, { username, password })
       .then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("trello_user", JSON.stringify(response.data));
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
         }
         return response.data;
       });
   };
   register = (data: UserRegister) => {
     return axios.post(`${MAIN_URL}/register`, { ...data }).then((response) => {
-      if (response.data.accessToken) {
-        localStorage.setItem("trello_user", JSON.stringify(response.data));
+      if (response.data.token) {
+        localStorage.setItem("token", response.data.token);
       }
       return response.data;
     });
   };
+  resetPassword = (email: string) => {
+    return axios
+      .post(`${MAIN_URL}/resetPassword`, { email })
+      .then((response) => {
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+        }
+        return response.data;
+      });
+  };
   // LOGOUT SERVICE
   logout = () => {
-    localStorage.removeItem("trello_user");
+    localStorage.removeItem("token");
   };
 }
 
