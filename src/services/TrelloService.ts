@@ -2,16 +2,25 @@ import axios from "axios";
 import { AppState } from "../state/appStateReducer";
 import { MAIN_URL } from "./config";
 
+const token = localStorage.getItem("token");
+
 class TrelloService {
+  authAxios = axios.create({
+    baseURL: MAIN_URL,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
   save = (payload: AppState) => {
-    return axios
-      .post<AppState>(`${MAIN_URL}/save`, payload)
+    return this.authAxios
+      .post<AppState>(`/save`, payload)
       .then((response) => response);
   };
 
   load = () => {
-    return axios
-      .get<AppState>(`${MAIN_URL}/load`)
+    return this.authAxios
+      .get<AppState>(`/load`)
       .then((response) => response.data);
   };
 }
