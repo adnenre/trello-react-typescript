@@ -13,6 +13,7 @@ import MenuItem from "@mui/material/MenuItem";
 import TrelloLogo from "../Components/Logo";
 
 import { useNavigate } from "react-router";
+import AuthService from "../services/AuthService";
 
 const settings = [{ text: "Logout", rout: "/" }];
 
@@ -32,6 +33,10 @@ const AppHeader = () => {
   const handleUserMenuClick =
     (setting) => (e: React.MouseEvent<HTMLElement>) => {
       Navigate(setting.rout);
+      console.log(setting);
+      if (setting.text === "Logout") {
+        AuthService.logout();
+      }
     };
 
   return (
