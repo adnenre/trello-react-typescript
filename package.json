@@ -39,7 +39,8 @@
     },
     "scripts": {
         "postInstall": "( npm install ) && ( cd server && npm install )",
-        "dev": "concurrently \"react-scripts start\" \"cd server && nodemon index.js\"",
+        "dev": "concurrently \"react-scripts start\" \"cd server && ts-node-dev src/index.ts\"",
+        "start": "concurrently \"react-scripts start\" \"cd server && ts-node src/index.ts\"",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",

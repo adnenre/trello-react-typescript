@@ -1,11 +1,11 @@
 //  React base styles
-import boxShadows from "theme/base/boxShadows";
-import typography from "theme/base/typography";
-import colors from "theme/base/colors";
-import borders from "theme/base/borders";
+import boxShadows from 'theme/base/boxShadows';
+import typography from 'theme/base/typography';
+import colors from 'theme/base/colors';
+import borders from 'theme/base/borders';
 
 //  React helper functions
-import pxToRem from "theme/functions/pxToRem";
+import pxToRem from 'theme/functions/pxToRem';
 
 const { lg } = boxShadows;
 const { size } = typography;
@@ -13,73 +13,73 @@ const { text, white, transparent, light, dark, gradients } = colors;
 const { borderRadius } = borders;
 
 export default {
-  styleOverrides: {
-    popper: {
-      boxShadow: lg,
-      padding: pxToRem(8),
-      fontSize: size.sm,
-      color: text.main,
-      textAlign: "left",
-      backgroundColor: `${white.main} !important`,
-      borderRadius: borderRadius.md,
-    },
-
-    paper: {
-      boxShadow: "none",
-      backgroundColor: transparent.main,
-    },
-
-    option: {
-      padding: `${pxToRem(4.8)} ${pxToRem(16)}`,
-      borderRadius: borderRadius.md,
-      fontSize: size.sm,
-      color: text.main,
-      transition: "background-color 300ms ease, color 300ms ease",
-
-      "&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover, &.Mui-selected:focus":
-        {
-          backgroundColor: light.main,
-          color: dark.main,
+    styleOverrides: {
+        popper: {
+            boxShadow: lg,
+            padding: pxToRem(8),
+            fontSize: size.sm,
+            color: text.main,
+            textAlign: 'left',
+            backgroundColor: `${white.main} !important`,
+            borderRadius: borderRadius.md,
         },
 
-      '&[aria-selected="true"]': {
-        backgroundColor: `${light.main} !important`,
-        color: `${dark.main} !important`,
-      },
-    },
+        paper: {
+            boxShadow: 'none',
+            backgroundColor: transparent.main,
+        },
 
-    noOptions: {
-      fontSize: size.sm,
-      color: text.main,
-    },
+        option: {
+            padding: `${pxToRem(4.8)} ${pxToRem(16)}`,
+            borderRadius: borderRadius.md,
+            fontSize: size.sm,
+            color: text.main,
+            transition: 'background-color 300ms ease, color 300ms ease',
 
-    groupLabel: {
-      color: dark.main,
-    },
+            '&:hover, &:focus, &.Mui-selected, &.Mui-selected:hover, &.Mui-selected:focus':
+                {
+                    backgroundColor: light.main,
+                    color: dark.main,
+                },
 
-    loading: {
-      fontSize: size.sm,
-      color: text.main,
-    },
+            '&[aria-selected="true"]': {
+                backgroundColor: `${light.main} !important`,
+                color: `${dark.main} !important`,
+            },
+        },
 
-    tag: {
-      display: "flex",
-      alignItems: "center",
-      height: "auto",
-      padding: pxToRem(4),
-      backgroundColor: gradients.dark.state,
-      color: white.main,
+        noOptions: {
+            fontSize: size.sm,
+            color: text.main,
+        },
 
-      "& .MuiChip-label": {
-        lineHeight: 1.2,
-        padding: `0 ${pxToRem(10)} 0 ${pxToRem(4)}`,
-      },
+        groupLabel: {
+            color: dark.main,
+        },
 
-      "& .MuiSvgIcon-root, & .MuiSvgIcon-root:hover, & .MuiSvgIcon-root:focus":
-        {
-          color: white.main,
-          marginRight: 0,
+        loading: {
+            fontSize: size.sm,
+            color: text.main,
+        },
+
+        tag: {
+            display: 'flex',
+            alignItems: 'center',
+            height: 'auto',
+            padding: pxToRem(4),
+            backgroundColor: gradients.dark.state,
+            color: white.main,
+
+            '& .MuiChip-label': {
+                lineHeight: 1.2,
+                padding: `0 ${pxToRem(10)} 0 ${pxToRem(4)}`,
+            },
+
+            '& .MuiSvgIcon-root, & .MuiSvgIcon-root:hover, & .MuiSvgIcon-root:focus':
+                {
+                    color: white.main,
+                    marginRight: 0,
+                },
         },
     },
-  },
 };

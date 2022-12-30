@@ -1,6 +1,6 @@
 export default {
-  defaultProps: {
-    underline: "none",
-    color: "inherit",
-  },
+    defaultProps: {
+        underline: 'none',
+        color: 'inherit',
+    },
 };

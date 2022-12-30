@@ -1,9 +1,4 @@
 {
     "liveServer.settings.port": 5501,
-    "colorize.languages": [
-        "css",
-        "javascript",
-        "scss",
-       
-    ]
+    "colorize.languages": ["css", "javascript", "scss"]
 }

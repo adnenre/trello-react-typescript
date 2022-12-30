@@ -1,5 +1,5 @@
 interface Item {
-  id: string;
+    id: string;
 }
 /**
  * FIND ITEM INDEX BY ID
@@ -8,10 +8,10 @@ interface Item {
  * @returns object
  */
 export const findItemIndexById = <TItem extends Item>(
-  items: TItem[],
-  id: string
+    items: TItem[],
+    id: string
 ) => {
-  return items.findIndex((item: TItem) => item.id === id);
+    return items.findIndex((item: TItem) => item.id === id);
 };
 
 /**
@@ -21,18 +21,18 @@ export const findItemIndexById = <TItem extends Item>(
  * @returns array of object
  */
 export const removeItemAtIndex = (arr: any, index: number): any => {
-  return [...arr.slice(0, index), ...arr.slice(index + 1)];
+    return [...arr.slice(0, index), ...arr.slice(index + 1)];
 };
 
 export function insertItemAtIndex<TItem>(
-  array: TItem[],
-  item: TItem,
-  index: number
+    array: TItem[],
+    item: TItem,
+    index: number
 ) {
-  return [...array.slice(0, index), item, ...array.slice(index)];
+    return [...array.slice(0, index), item, ...array.slice(index)];
 }
 
 export const moveItem = <TItem>(array: TItem[], from: number, to: number) => {
-  const item = array[from];
-  return insertItemAtIndex(removeItemAtIndex(array, from), item, to);
+    const item = array[from];
+    return insertItemAtIndex(removeItemAtIndex(array, from), item, to);
 };

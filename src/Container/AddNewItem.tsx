@@ -1,56 +1,54 @@
-import { useState } from "react";
-import { TButton } from "../Components/Button";
-import NewItemForm from "../NewItemForm";
+import { useState } from 'react';
+import { TButton } from '../Components/Button';
+import NewItemForm from '../NewItemForm';
 
 type AddNewItemProps = {
-  onAdd(text: string): void;
-  onClickOutSide(): void;
-  toggleButtonText: string;
-  inputPlaceHolder?: string;
+    onAdd(title: string): void;
+    toggleButtonText: string;
+    inputPlaceHolder?: string;
 } & typeof defaultProps;
 
 const defaultProps = {
-  onAdd: console.log,
-  onClickOutSide: console.log,
-  toggleButtonText: "+ Add new Task",
-  inputPlaceHolder: "Enter a title for you card ...",
+    onAdd: (title: string) => {},
+    toggleButtonText: '+ Add new Task',
+    inputPlaceHolder: 'Enter a title for you card ...',
 };
 
 const AddNewItem = (props: AddNewItemProps) => {
-  const [showForm, setShowForm] = useState<boolean>(false);
-  const { onAdd, toggleButtonText, inputPlaceHolder } = props;
+    const [showForm, setShowForm] = useState<boolean>(false);
+    const { onAdd, toggleButtonText, inputPlaceHolder } = props;
 
-  /**
-   * SHOW  FORM
-   */
-  const handleShow = () => setShowForm(true);
+    /**
+     * SHOW  FORM
+     */
+    const handleShow = () => setShowForm(true);
 
-  /**
-   * HANDLE ADD NEW ITEM
-   */
-  const handleAddNewItem = (text: string) => {
-    onAdd(text);
-    setShowForm(false);
-  };
-  /**
-   * HANDLE CLICKOUTSIDE FORM
-   */
-  const handleClickOutSide = () => setShowForm(false);
+    /**
+     * HANDLE ADD NEW ITEM
+     */
+    const handleAddNewItem = (title: string) => {
+        onAdd(title);
+        setShowForm(false);
+    };
+    /**
+     * HANDLE CLICKOUTSIDE FORM
+     */
+    const handleClickOutSide = () => setShowForm(false);
 
-  if (showForm) {
+    if (showForm) {
+        return (
+            <NewItemForm
+                inputPlaceHolder={inputPlaceHolder}
+                onAdd={handleAddNewItem}
+                onClickOutSide={handleClickOutSide}
+            />
+        );
+    }
     return (
-      <NewItemForm
-        inputPlaceHolder={inputPlaceHolder}
-        onAdd={handleAddNewItem}
-        onClickOutSide={handleClickOutSide}
-      />
+        <TButton color="primary" variant="contained" onClick={handleShow}>
+            {toggleButtonText}
+        </TButton>
     );
-  }
-  return (
-    <TButton color="primary" variant="contained" onClick={handleShow}>
-      {toggleButtonText}
-    </TButton>
-  );
 };
 
 AddNewItem.defaultProps = defaultProps;

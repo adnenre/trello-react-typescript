@@ -1,25 +1,25 @@
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *:before,
 *:after {
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0;
+    box-sizing: inherit;
+    padding: 0;
+    margin: 0;
 }
 
 html,
 body,
 #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: open sans, sans-serif;
-  line-height: 1.7;
-  font-size: 14px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: open sans, sans-serif;
+    line-height: 1.7;
+    font-size: 14px;
 }
 .warning {
-  color: #ff8a65;
+    color: #ff8a65;
 }

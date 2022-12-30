@@ -3,16 +3,16 @@
  */
 
 //  React helper functions
-import rgba from "theme/functions/rgba";
-import pxToRem from "theme/functions/pxToRem";
+import rgba from 'theme/functions/rgba';
+import pxToRem from 'theme/functions/pxToRem';
 
-function boxShadow(offset = [], radius = [], color, opacity, inset = "") {
-  const [x, y] = offset;
-  const [blur, spread] = radius;
+function boxShadow(offset = [], radius = [], color, opacity, inset = '') {
+    const [x, y] = offset;
+    const [blur, spread] = radius;
 
-  return `${inset} ${pxToRem(x)} ${pxToRem(y)} ${pxToRem(blur)} ${pxToRem(
-    spread
-  )} ${rgba(color, opacity)}`;
+    return `${inset} ${pxToRem(x)} ${pxToRem(y)} ${pxToRem(blur)} ${pxToRem(
+        spread
+    )} ${rgba(color, opacity)}`;
 }
 
 export default boxShadow;

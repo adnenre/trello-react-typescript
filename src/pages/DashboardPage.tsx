@@ -1,14 +1,14 @@
-import Dashboard from "../Container/Dashboard";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend as Backend } from "react-dnd-html5-backend";
-import AppStateProvider from "../state/AppStateContext";
+import Dashboard from '../Container/Dashboard';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend as Backend } from 'react-dnd-html5-backend';
+import AppStateProvider from '../state/AppStateContext';
 
 const TrelloDashboard = () => (
-  <DndProvider backend={Backend}>
     <AppStateProvider>
-      <Dashboard />
+        <DndProvider backend={Backend}>
+            <Dashboard />
+        </DndProvider>
     </AppStateProvider>
-  </DndProvider>
 );
 
 export default TrelloDashboard;

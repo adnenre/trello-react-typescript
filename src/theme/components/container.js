@@ -1,12 +1,12 @@
 //  React base styles
 
-import breakpoints from "theme/base/breakpoints";
+import breakpoints from 'theme/base/breakpoints';
 
 //  React helper functions
-import pxToRem from "theme/functions/pxToRem";
+import pxToRem from 'theme/functions/pxToRem';
 
 const {
-  values: { sm, md, lg, xl, xxl },
+    values: { sm, md, lg, xl, xxl },
 } = breakpoints;
 
 const SM = `@media (min-width: ${sm}px)`;
@@ -16,45 +16,45 @@ const XL = `@media (min-width: ${xl}px)`;
 const XXL = `@media (min-width: ${xxl}px)`;
 
 const sharedClasses = {
-  paddingRight: `${pxToRem(24)} !important`,
-  paddingLeft: `${pxToRem(24)} !important`,
-  marginRight: "auto !important",
-  marginLeft: "auto !important",
-  width: "100% !important",
-  position: "relative",
+    paddingRight: `${pxToRem(24)} !important`,
+    paddingLeft: `${pxToRem(24)} !important`,
+    marginRight: 'auto !important',
+    marginLeft: 'auto !important',
+    width: '100% !important',
+    position: 'relative',
 };
 
 const container = {
-  [SM]: {
-    ".MuiContainer-root": {
-      ...sharedClasses,
-      maxWidth: "540px !important",
+    [SM]: {
+        '.MuiContainer-root': {
+            ...sharedClasses,
+            maxWidth: '540px !important',
+        },
     },
-  },
-  [MD]: {
-    ".MuiContainer-root": {
-      ...sharedClasses,
-      maxWidth: "720px !important",
+    [MD]: {
+        '.MuiContainer-root': {
+            ...sharedClasses,
+            maxWidth: '720px !important',
+        },
     },
-  },
-  [LG]: {
-    ".MuiContainer-root": {
-      ...sharedClasses,
-      maxWidth: "960px !important",
+    [LG]: {
+        '.MuiContainer-root': {
+            ...sharedClasses,
+            maxWidth: '960px !important',
+        },
     },
-  },
-  [XL]: {
-    ".MuiContainer-root": {
-      ...sharedClasses,
-      maxWidth: "1140px !important",
+    [XL]: {
+        '.MuiContainer-root': {
+            ...sharedClasses,
+            maxWidth: '1140px !important',
+        },
     },
-  },
-  [XXL]: {
-    ".MuiContainer-root": {
-      ...sharedClasses,
-      maxWidth: "1320px !important",
+    [XXL]: {
+        '.MuiContainer-root': {
+            ...sharedClasses,
+            maxWidth: '1320px !important',
+        },
     },
-  },
 };
 
 export default container;
