@@ -5,12 +5,8 @@ import {
     AuthenticationContainer,
     AuthenticationPage,
 } from './AuthenticationContainer.styled';
-import { IbackendResponce } from '../interfaces';
+import { IAuthPage } from '../interfaces';
 import TrelloLogo from '../Components/Logo';
-
-type IAuthPage = {
-    backendResponce: IbackendResponce | null;
-};
 
 const AuthPage: React.FC<IAuthPage> = ({ backendResponce, children }) => {
     return (
@@ -55,7 +51,6 @@ const AuthPage: React.FC<IAuthPage> = ({ backendResponce, children }) => {
                         <Stack spacing={1}>
                             {backendResponce?.message && (
                                 <Alert severity="error">
-                                    {' '}
                                     {backendResponce?.message}
                                 </Alert>
                             )}

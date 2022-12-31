@@ -75,6 +75,7 @@ const LoginForm: React.FC<IloginProps> = ({ onLogin, loading }) => {
                     value={userLoginInfo.password}
                     onChange={handleChangeInput}
                     required
+                    type="password"
                 />
                 <Stack
                     direction="row"

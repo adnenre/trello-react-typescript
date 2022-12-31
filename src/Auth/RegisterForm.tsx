@@ -12,7 +12,7 @@ const RegisterForm : React.FC<IregisterProps> = ({ onRegister, loading }) => {
         username: '',
         email: '',
         password: '',
-        confirmePassword: '',
+        password_confirmation: '',
     });
 
     // ON INPUT CHANGE
@@ -54,13 +54,15 @@ const RegisterForm : React.FC<IregisterProps> = ({ onRegister, loading }) => {
                     value={userRegisterInfo.password}
                     onChange={handleChangeInput}
                     required
+                    type="password"
                 />
                 <STextField
-                    name="confirmePassword"
+                    name="password_confirmation"
                     label="Password Confirme"
-                    value={userRegisterInfo.confirmePassword}
+                    value={userRegisterInfo.password_confirmation}
                     onChange={handleChangeInput}
                     required
+                    type="password"
                 />
                 <TLoadingButton
                     loading={loading}

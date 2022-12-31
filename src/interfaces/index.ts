@@ -14,7 +14,7 @@ export interface IuserRegister{
     username: string;
     email: string;
     password: string;
-    confirmePassword: string;
+    password_confirmation: string;
 }
 
 export interface IbackendResponce {
@@ -38,3 +38,8 @@ export interface IregisterProps {
     onRegister(data: IuserRegister): void;
     loading: boolean;
 }
+
+export interface IAuthPage  {
+    backendResponce: IbackendResponce | null;
+}
+
