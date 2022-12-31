@@ -1,10 +1,9 @@
 import axios from 'axios';
 import MAIN_URL from './config';
 import { IuserLogin, IuserRegister } from '../interfaces';
-import storage from 'use-storage-node';
-import storageKey from './config';
-const key = storageKey || 'storage_key';
-const store = storage(key);
+import store from './StorageService';
+
+
 class AuthService {
     // LOGIN SERVICE
     login = (data: IuserLogin) => {

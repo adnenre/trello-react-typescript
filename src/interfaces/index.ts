@@ -7,6 +7,7 @@ export interface ITabPanel {
 export interface IuserLogin{
     email: string;
     password: string;
+    rememberMe : boolean;
 }
 
 export interface IuserRegister{

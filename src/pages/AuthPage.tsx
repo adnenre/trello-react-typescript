@@ -16,7 +16,6 @@ const App = () => {
      */
     const handleLogin = async (data: IuserLogin) => {
         let responce = await AuthService.login(data);
-        console.log(responce);
         if (responce.status) {
             navigate('/Dashboard');
         } else {

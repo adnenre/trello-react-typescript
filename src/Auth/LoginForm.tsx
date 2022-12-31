@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Stack, FormControlLabel, Checkbox, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 import STextField from '../Components/TextField';
 import { TLoadingButton } from '../Components/Button';
 import { useTitle } from '../hook/useTitle';
 import { IloginProps, IuserLogin } from '../interfaces';
+import store from '../services/StorageService';
 
 const LoginForm: React.FC<IloginProps> = ({ onLogin, loading }) => {
-    // REMEMBER USER CREDENTIAL CHECKED
-    const [checked, setChecked] = useState(false);
-
     // USER INFO STATE
     const [userLoginInfo, setuserLoginInfo] = useState<IuserLogin>({
         email: '',
         password: '',
+        rememberMe: false,
     });
 
     // ON INPUT CHANGE
@@ -25,13 +24,40 @@ const LoginForm: React.FC<IloginProps> = ({ onLogin, loading }) => {
         });
     };
 
+    const handleChangeRememberMe = (e: {
+        target: { name: string; checked: boolean };
+    }) => {
+        const { name, checked } = e.target;
+        let userInfo = {
+            ...userLoginInfo,
+            [name]: checked,
+        }
+        setuserLoginInfo(userInfo);
+        if (checked) {
+             // login data stored encrypted
+            store.setItem('l_data', userInfo);
+        } else {
+            store.removeItem('l_data');
+        }
+    };
+
     // ON LOGIN SUBMIT
     const onSubmit = (e: React.SyntheticEvent) => {
         e.preventDefault();
         onLogin(userLoginInfo);
     };
-    // HANDLE CHECKED REMEMBER ME
-    const handleChecked = (e) => setChecked(e.target.checked);
+
+    const getUserFromStore = () => {
+       
+        const userInfo = store.getItem('l_data');
+        if (userInfo) {
+            setuserLoginInfo(userInfo);
+        }
+    };
+
+    useEffect(() => {
+        getUserFromStore();
+    }, []);
     useTitle('Login');
     return (
         <form onSubmit={onSubmit}>
@@ -58,9 +84,9 @@ const LoginForm: React.FC<IloginProps> = ({ onLogin, loading }) => {
                     <FormControlLabel
                         control={
                             <Checkbox
-                                checked={checked}
-                                onChange={handleChecked}
-                                name="checked"
+                                checked={userLoginInfo.rememberMe}
+                                onChange={handleChangeRememberMe}
+                                name="rememberMe"
                                 color="success"
                             />
                         }
