@@ -52,7 +52,6 @@ const Auth: React.FC<IAuth> = ({ backendResponce, onLogin, onRegister }) => {
     };
     useEffect(() => {
         setLoading(false);
-        console.log(backendResponce);
     }, [backendResponce?.message]);
 
     return (

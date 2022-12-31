@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { MAIN_URL } from './config';
+import  MAIN_URL  from './config';
 import { IuserLogin, IuserRegister } from '../interfaces';
 class AuthService {
     // LOGIN SERVICE

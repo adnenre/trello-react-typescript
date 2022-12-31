@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { List } from '../state/appStateReducer';
-import { MAIN_URL } from './config';
+import MAIN_URL from './config';
 
 const token = localStorage.getItem('token');
 
